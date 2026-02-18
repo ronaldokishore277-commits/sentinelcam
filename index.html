@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SentinelCam</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #1a1a1a;
+            color: white;
+        }
+        video, canvas {
+            display: none;
+        }
+        #camera-feed {
+            display: block;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 640px;
+            border: 3px solid #333;
+            border-radius: 10px;
+        }
+        #overlay-canvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 640px;
+            pointer-events: none;
+        }
+        .container {
+            position: relative;
+            display: inline-block;
+        }
+        #status {
+            margin: 20px;
+            padding: 10px;
+            background: #333;
+            border-radius: 5px;
+        }
+        .warning {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        .info {
+            color: #4ecdc4;
+        }
+    </style>
+</head>
+<body>
+    <h1>SentinelCam</h1>
+    <p>Smart Camera System</p>
+    
+    <div class="container">
+        <video id="camera-feed" autoplay playsinline></video>
+        <canvas id="overlay-canvas"></canvas>
+    </div>
+    
+    <div id="status">
+        <p id="light-status">Light Level: <span class="info">Waiting...</span></p>
+        <p id="detection-status">Detection: <span class="info">Waiting...</span></p>
+    </div>
+
+    <!-- Load TensorFlow.js and model -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+    
+    <!-- Our JavaScript code -->
+    <script src="app.js"></script>
+</body>
+</html>
